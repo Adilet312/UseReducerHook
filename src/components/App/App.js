@@ -1,7 +1,9 @@
-import React,{useState,useEffect,useReducer,Fragment} from 'react';
+import React,{ useState,useEffect,useReducer,Fragment } from 'react';
+import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 import List from '../List/List';
 import './App.css';
 import Navigation from '../Navigation/Navigation';
+import BookDetail from '../BookDetail/BookDetail';
 import axios from 'axios';
 import {without,findIndex} from 'lodash';
 export const BookContext = React.createContext();
@@ -62,15 +64,25 @@ const onSearch = (term_search) =>{
 }
 const {isLoading, isError, books_data} = books;
 	return(
+		<Router>
 				<main>
 				    {isError && <h1>Something went wrong . . .</h1>}
           <BookContext.Provider value = {{books_data,onSearch,searchTerm}}>
 						<Navigation/>
+						<Switch>
 						{
-						 isLoading?<h1>Loading ...</h1>: <List/>
+						 isLoading?<h1>Loading ...</h1>:<Route  path = '/books'><List/></Route>
 						}
+						<Route path = '/book/:id' render = {(props) => {
+							let bookId = Number(props.match.params.id);
+							return(
+								<BookDetail name = {books_data[bookId].name} image = {books_data[bookId].image}/>
+							)
+						}}/>
+						</Switch>
 					</BookContext.Provider>
 				</main>
+	</Router>
 	)
 }
 export default App;
