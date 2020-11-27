@@ -1,8 +1,7 @@
 import React, {Fragment,useContext} from 'react';
-import Book from './Book';
-import './css/List.css';
-import {BookContext} from './App';
-
+import Book from '../Book/Book';
+import {BookContext} from '../App/App';
+import './List.css';
 const List = () => {
   const {books_data} = useContext(BookContext);
   console.log("data from list: ",books_data);
