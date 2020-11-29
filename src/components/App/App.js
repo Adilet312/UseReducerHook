@@ -16,9 +16,9 @@ const reducer = (state,action) =>{
 		case 'SEARCH_BOOKS':
 		console.log("search word from reducer: " ,action.search);
 			return ({...state, isLoading: false, isError: false, books_data: action.search ? state.books_data.filter(book => book.name.toLowerCase().includes(action.search)):state.books_data})
-
 		case 'REMOVE_BOOK':
-			return
+		 const tempBooks = without(state.books_data,action.book)
+			return {...state, isLoading: false, isError: false, books_data: tempBooks}
 		case 'ADD_BOOK':
 			return
 		case 'UPDATE_BOOK':
@@ -62,21 +62,33 @@ const onSearch = (term_search) =>{
 	setSearchTerm(term_search)
 
 }
+const deleteBook = (bookForDeletion) =>{
+	dispatchBooks({
+		type:'REMOVE_BOOK',
+		book:bookForDeletion
+	})
+}
+const updateBook = (bookForUpdate) =>{
+	dispatchBooks({
+		type:'UPDATE_BOOK',
+		book:bookForUpdate
+	})
+}
 const {isLoading, isError, books_data} = books;
 	return(
 		<Router>
 				<main>
 				    {isError && <h1>Something went wrong . . .</h1>}
-          <BookContext.Provider value = {{books_data,onSearch,searchTerm}}>
+          <BookContext.Provider value = {{books_data,onSearch,searchTerm,deleteBook}}>
 						<Navigation/>
 						<Switch>
 						{
-						 isLoading?<h1>Loading ...</h1>:<Route  path = '/books'><List/></Route>
+						 isLoading?<h1>Loading ...</h1>:<Route  exact path = '/'><List/></Route>
 						}
 						<Route path = '/book/:id' render = {(props) => {
 							let bookId = Number(props.match.params.id);
 							return(
-								<BookDetail name = {books_data[bookId].name} image = {books_data[bookId].image}/>
+								<BookDetail book = {books_data[bookId]}/>
 							)
 						}}/>
 						</Switch>

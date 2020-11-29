@@ -13,7 +13,7 @@ const [isOpen, setIsOpen] = useState(false);
       {
         isOpen && <MenuModal setIsOpen = {setIsOpen}/>
       }
-      <Link to='/books'><AiFillHome style = {{color:"#fff",position:"absolute", right: "20px",top:"30px",fontSize:"25px"}}/></Link>
+      <Link to='/'><AiFillHome style = {{color:"#fff",position:"absolute", right: "20px",top:"30px",fontSize:"25px"}}/></Link>
       <Search/>
     </header>
   )
