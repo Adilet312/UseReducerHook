@@ -1,12 +1,12 @@
-# _Library_
+# _Managing State With UseReducer hook_
 
 #### _Version 1_
-#### _Date 10/26/2020_
+#### _Date 11/30/2020_
 #### By _**Adilet Momunaliev**_
 
 ## Description
 
-_Library shows list of books,adds a new book, Sorts by ascending and descending order,and Searches.During the process hooks were used._
+_UseReducer manages data wih useReducer hook and also passes data into child components by using useContext._
 
 ## Getting Started
 
@@ -19,7 +19,8 @@ These instructions will get you a copy of the project up and running on your loc
 * npm install
 * npm run start
 ### Specifications
- ![min-width:620px](LibraryHooks.png);
+ ![min-width:620px](useReducer.png);
+ ![min-width:620px](useReducer2.png);
 ## Technologies Used
 
 _HTML, CSS, JavaScript,Async functions,React Hooks, IDE Atom_

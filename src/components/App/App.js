@@ -68,10 +68,11 @@ const deleteBook = (bookForDeletion) =>{
 		book:bookForDeletion
 	})
 }
-const updateBook = (bookForUpdate) =>{
+const updateBook = (e) =>{
+	e.preventDefault();
 	dispatchBooks({
 		type:'UPDATE_BOOK',
-		book:bookForUpdate
+		book:"Adilet"
 	})
 }
 const {isLoading, isError, books_data} = books;
@@ -79,7 +80,7 @@ const {isLoading, isError, books_data} = books;
 		<Router>
 				<main>
 				    {isError && <h1>Something went wrong . . .</h1>}
-          <BookContext.Provider value = {{books_data,onSearch,searchTerm,deleteBook}}>
+          <BookContext.Provider value = {{ books_data, onSearch, searchTerm, deleteBook, updateBook}}>
 						<Navigation/>
 						<Switch>
 						{
