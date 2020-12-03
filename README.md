@@ -10,7 +10,7 @@ _UseReducer manages data wih useReducer hook and also passes data into child com
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Not fully completed CRUD .
 
 ### Instruction
 
